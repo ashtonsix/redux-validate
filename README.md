@@ -38,13 +38,13 @@ Sync: `remainingArgs :: allValues, props`
 Async: `remainingArgs :: allValues, dispatch, props`
 
 ```js
-validate({password: p => p.length <= 5 && 'Password must be longer than 6 charachters'}) // {password: 'correcthorsebatterystaple'} =>
-                                                                                         // {}
+validate({password: p => p.length <= 5 && 'Password must be longer than 6 charachters'})
+// {password: 'correcthorsebatterystaple'} => {}
 ```
 
 ```js
-validate(({frostBolt, fireBolt}) => frostBolt && fireBolt && ({magic: 'You can only pick one type of bolt'}))
-// {frostBolt: true, fireBolt: true} => {magic: 'You can only pick one type of bolt'}
+validate(({frostBolt, fireBolt}) => frostBolt && fireBolt && ({magic: 'You can only pick one'}))
+// {frostBolt: true, fireBolt: true} => {magic: 'You can only pick one'}
 ```
 
 Validation is chainable, first error encountered has precedent
