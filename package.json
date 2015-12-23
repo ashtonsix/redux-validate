@@ -1,6 +1,6 @@
 {
   "name": "redux-form-validate",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Easy validation for redux-form",
   "scripts": {
     "prebuild": "rimraf index.js",
