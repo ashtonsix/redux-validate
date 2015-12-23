@@ -12,7 +12,7 @@ import validate from 'redux-form-validate';
 reduxForm({
   ...
   validate: validate(['title', 'description']) // {title: 'Blah', description: ''} =>
-})                                             // {description: 'Description is required'}
+})(Component)                                  // {description: 'Description is required'}
 ```
 
 ## Examples
@@ -34,8 +34,8 @@ validate({title: 'Subject needed'}) // {title: ''} =>
 
 ```
 f :: (value, key, ...remainingArgs)
-Sync: `remainingArgs :: allValues, props
-Async: `remainingArgs :: allValues, dispatch, props
+Sync: remainingArgs :: allValues, props
+Async: remainingArgs :: allValues, dispatch, props
 ```
 
 ```js
@@ -70,4 +70,6 @@ validate(null, (v, k) => !v && `You forgot ${_.startCase(v)}`) // {title: ''}
                                                                // {title: 'You forgot Title'}
 ```
 
-ISC license
+## License
+
+ISC
