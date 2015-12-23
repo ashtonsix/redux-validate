@@ -12,8 +12,7 @@ import validate from 'redux-form-validate';
 reduxForm({
   ...
   validate: validate(['title', 'description']) // {title: 'Blah', description: ''} =>
-                                               // {description: 'Description is required'}
-})
+})                                             // {description: 'Description is required'}
 ```
 
 ## Examples
