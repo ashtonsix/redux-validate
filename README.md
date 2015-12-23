@@ -33,7 +33,9 @@ validate({title: 'Subject needed'}) // {title: ''} =>
 ```
 
 `f :: (value, key, ...remainingArgs)`
+
 Sync: `remainingArgs :: allValues, props`
+
 Async: `remainingArgs :: allValues, dispatch, props`
 
 ```js
