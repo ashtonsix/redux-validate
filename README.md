@@ -32,11 +32,11 @@ validate({title: 'Subject needed'}) // {title: ''} =>
                                     // {title: 'Subject needed'}
 ```
 
-`f :: (value, key, ...remainingArgs)`
-
-Sync: `remainingArgs :: allValues, props`
-
-Async: `remainingArgs :: allValues, dispatch, props`
+```
+f :: (value, key, ...remainingArgs)
+Sync: `remainingArgs :: allValues, props
+Async: `remainingArgs :: allValues, dispatch, props
+```
 
 ```js
 validate({password: p => p.length <= 5 && 'Password must be longer than 6 charachters'})
