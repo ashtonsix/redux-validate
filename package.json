@@ -1,5 +1,5 @@
 {
-  "name": "redux-form-validate",
+  "name": "redux-validate",
   "version": "0.1.0",
   "description": "Easy validation for redux-form",
   "scripts": {
@@ -9,11 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/ashtonwar/redux-form-validate.git"
+    "url": "http://github.com/ashtonwar/redux-validate.git"
   },
   "author": "Ashton War <me@ashtonwar.com> (http://ashtonwar.com)",
   "license": "ISC",
-  "homepage": "http://github.com/ashtonwar/redux-form-validate",
+  "homepage": "http://github.com/ashtonwar/redux-validate",
   "dependencies": {
     "lodash": "^3.10.1"
   },

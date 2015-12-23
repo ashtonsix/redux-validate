@@ -1,13 +1,13 @@
-# redux-form-validate
+# redux-validate
 
 Easy validation for [redux-form](https://github.com/erikras/redux-form)
 
-`npm i redux-form-validate`
+`npm i redux-validate`
 
 ## Quick Start
 
 ```js
-import validate from 'redux-form-validate';
+import validate from 'redux-validate';
 
 reduxForm({
   ...
@@ -58,7 +58,7 @@ validate(['title']).then({subject: 'Content missing'}) // {title: 'Red Book', su
 The default function can be replaced totally or case-by-case
 
 ```js
-import {createValidate} from 'redux-form-validate';
+import {createValidate} from 'redux-validate';
 const validate = createValidate((v, k) => !v && `You forgot ${_.startCase(k)}`);
 
 validate() // {title: ''} =>
@@ -69,6 +69,12 @@ validate() // {title: ''} =>
 validate(null, (v, k) => !v && `You forgot ${_.startCase(v)}`) // {title: ''} =>
                                                                // {title: 'You forgot Title'}
 ```
+
+## Todo
+
+* Promises
+* Deep Fields
+* React PropTypes
 
 ## License
 
