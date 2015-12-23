@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "description": "Easy validation for redux-form",
   "scripts": {
-    "prebuild": "rimraf index.js",
-    "build": "babel src -d .",
-    "dev": "node server/index.js",
-    "lint": "eslint client server"
+    "prestart": "rimraf index.js",
+    "start": "babel src -d .",
+    "test": "node tests/index.js && eslint src/index.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +26,7 @@
     "babel-preset-stage-0": "6.3.13",
     "eslint": "1.10.3",
     "eslint-config-airbnb": "2.1.1",
-    "rimraf": "2.4.4"
+    "rimraf": "2.4.4",
+    "tape": "^4.3.0"
   }
 }

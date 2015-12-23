@@ -51,7 +51,7 @@ validate(({frostBolt, fireBolt}) => frostBolt && fireBolt && ({magic: 'You can o
 Validation is chainable, first error encountered has precedent
 
 ```js
-validate(['title'].then({subject: 'Content missing'}) // {title: 'Red Book', subject: ''} =>
+validate(['title']).then({subject: 'Content missing'}) // {title: 'Red Book', subject: ''} =>
                                                       // {subject: 'Content missing'}
 ```
 
@@ -59,14 +59,14 @@ The default function can be replaced totally or case-by-case
 
 ```js
 import {createValidate} from 'redux-form-validate';
-const validate = createValidate((v, k) => !v && `You forgot ${_.startCase(v)}`);
+const validate = createValidate((v, k) => !v && `You forgot ${_.startCase(k)}`);
 
-validate() // {title: ''}
+validate() // {title: ''} =>
            // {title: 'You forgot Title'}
 ```
 
 ```js
-validate(null, (v, k) => !v && `You forgot ${_.startCase(v)}`) // {title: ''}
+validate(null, (v, k) => !v && `You forgot ${_.startCase(v)}`) // {title: ''} =>
                                                                // {title: 'You forgot Title'}
 ```
 
