@@ -1,0 +1,33 @@
+{
+  "name": "redux-form-validate",
+  "main": "dist/index.js",
+  "version": "0.0.1",
+  "description": "Easy validation for redux-form",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "babel src -d dist",
+    "dev": "node server/index.js",
+    "lint": "eslint client server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/ashtonwar/redux-form-validate.git"
+  },
+  "author": "Ashton War <me@ashtonwar.com> (http://ashtonwar.com)",
+  "license": "ISC",
+  "homepage": "http://github.com/ashtonwar/redux-form-validate",
+  "dependencies": {
+    "lodash": "^3.10.1"
+  },
+  "devDependencies": {
+    "babel": "6.3.13",
+    "babel-core": "6.3.21",
+    "babel-eslint": "5.0.0-beta6",
+    "babel-loader": "6.2.0",
+    "babel-preset-es2015": "6.3.13",
+    "babel-preset-stage-0": "6.3.13",
+    "eslint": "1.10.3",
+    "eslint-config-airbnb": "2.1.1",
+    "rimraf": "2.4.4",
+  }
+}

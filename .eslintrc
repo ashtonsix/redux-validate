@@ -1,0 +1,17 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "rules": {
+    // THIS IS SPARTA!!
+    "id-length": 0,
+    // THIS IS... a love of expressions
+    "no-nested-ternary": 0,
+    // console <3
+    "no-console": 0,
+    // For components
+    "new-cap": 0
+  },
+  "globals": {
+    "SANTA": true
+  }
+}
