@@ -12,7 +12,9 @@
     "semi": [2, "never"],
     "no-unexpected-multiline": 2,
     // looks funny
-    "object-curly-spacing": [2, "never"]
+    "object-curly-spacing": [2, "never"],
+    // 100 too short, I have big screen
+    "max-len": [2, 130]
   },
   "globals": {
     "SANTA": true
