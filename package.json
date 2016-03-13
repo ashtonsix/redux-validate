@@ -9,6 +9,7 @@
     "pretest": "npm start",
     "test": "node tests/index.js && eslint src/index.js"
   },
+  "pre-commit": "test",
   "repository": {
     "type": "git",
     "url": "http://github.com/ashtonwar/redux-validate.git"

@@ -18,20 +18,14 @@ reduxForm({
 ## Examples
 
 ```js
-validate() // {title: ''} =>
-           // {title: 'Title is required'}
+validate() // {title: ''} => {title: 'Title is required'}
+
+validate(['title']) // {title: ''} => {title: 'Title is required'}
+
+validate({title: 'Subject needed'}) // {title: ''} => {title: 'Subject needed'}
 ```
 
-```js
-validate(['title']) // {title: ''} =>
-                    // {title: 'Title is required'}
-```
-
-```js
-validate({title: 'Subject needed'}) // {title: ''} =>
-                                    // {title: 'Subject needed'}
-```
-
+For using functions
 ```
 f :: (value, key, ...remainingArgs)
 Sync: remainingArgs :: allValues, props
@@ -41,18 +35,14 @@ Async: remainingArgs :: allValues, dispatch, props
 ```js
 validate({password: p => p.length <= 5 && 'Password must be longer than 6 charachters'})
 // {password: 'correcthorsebatterystaple'} => {}
-```
 
-```js
 validate(({frostBolt, fireBolt}) => frostBolt && fireBolt && ({magic: 'You can only pick one'}))
 // {frostBolt: true, fireBolt: true} => {magic: 'You can only pick one'}
 ```
-
 Validation is chainable, first error encountered has precedent
-
 ```js
-validate(['title']).then({subject: 'Content missing'}) // {title: 'Red Book', subject: ''} =>
-                                                      // {subject: 'Content missing'}
+validate(['title']).then({subject: 'Content missing'})
+// {title: 'Red Book', subject: ''} => {subject: 'Content missing'}
 ```
 
 The default function can be replaced totally or case-by-case
@@ -61,13 +51,10 @@ The default function can be replaced totally or case-by-case
 import {createValidate} from 'redux-validate';
 const validate = createValidate((v, k) => !v && `You forgot ${_.startCase(k)}`);
 
-validate() // {title: ''} =>
-           // {title: 'You forgot Title'}
-```
+validate() // {title: ''} => {title: 'You forgot Title'}
 
-```js
-validate(null, (v, k) => !v && `You forgot ${_.startCase(v)}`) // {title: ''} =>
-                                                               // {title: 'You forgot Title'}
+validate(null, (v, k) => !v && `You forgot ${_.startCase(v)}`)
+// {title: ''} => {title: 'You forgot Title'}
 ```
 
 ## Todo
