@@ -1,11 +1,11 @@
 'use strict';
 
-var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; })();
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.createValidate = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 var _lodash = require('lodash');
 
@@ -46,7 +46,7 @@ var createValidate = exports.createValidate = function createValidate(df) {
   var testAll = function testAll(lo, f, args) {
     return lo.mapValues(function (v, k) {
       return (f || df).apply(undefined, [v, k].concat(_toConsumableArray(args)));
-    }).pick(_lodash2.default.identity).value();
+    }).pickBy().value();
   };
 
   return thenable(function (reqs, func) {
@@ -65,7 +65,7 @@ var createValidate = exports.createValidate = function createValidate(df) {
         var v = _ref4[0];
         var f = _ref4[1];
         return f.apply(undefined, [v, k, values].concat(args));
-      }).value() : {};
+      }).pickBy().value() : {};
     };
   });
 };

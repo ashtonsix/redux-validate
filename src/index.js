@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _ from 'lodash'
 
 const thenable = (blueprint, stack = []) => (...raw) => {
   const inner = (...argsRaw) => _.thru(
@@ -6,17 +6,17 @@ const thenable = (blueprint, stack = []) => (...raw) => {
     ([args, current]) => stack.concat(blueprint(...raw)).reduce(
       (c, f, i) => _.defaults(f(...args, c), i && c), current
     )
-  );
-  inner.then = thenable(blueprint, stack.concat(blueprint(...raw)));
-  return inner;
-};
+  )
+  inner.then = thenable(blueprint, stack.concat(blueprint(...raw)))
+  return inner
+}
 
 export const createValidate = df => {
   const testAll = (lo, f, args) => (
     lo.mapValues((v, k) => (
       (f || df)(v, k, ...args)
-    )).pick(_.identity).value()
-  );
+    )).pickBy().value()
+  )
 
   return thenable((reqs, func) => (values, ...args) => (
     typeof reqs === 'function' ?
@@ -28,8 +28,8 @@ export const createValidate = df => {
     _.isPlainObject(values) ? (
         _.chain(values).pick(_.keys(reqs))
           .mapValues((v, k) => [v, typeof reqs[k] === 'function' ? reqs[k] : () => reqs[k]])
-          .mapValues(([v, f], k) => f(v, k, values, ...args)).value()) : {}
-  ));
-};
+          .mapValues(([v, f], k) => f(v, k, values, ...args)).pickBy().value()) : {}
+  ))
+}
 
-export default createValidate((v, k) => !v && `${_.startCase(k)} is required`);
+export default createValidate((v, k) => !v && `${_.startCase(k)} is required`)

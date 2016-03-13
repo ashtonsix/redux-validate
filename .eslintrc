@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb",
+  "extends": "airbnb/base",
   "parser": "babel-eslint",
   "rules": {
     // THIS IS SPARTA!!
@@ -8,8 +8,11 @@
     "no-nested-ternary": 0,
     // console <3
     "no-console": 0,
-    // For components
-    "new-cap": 0
+    // nah mate, no semi
+    "semi": [2, "never"],
+    "no-unexpected-multiline": 2,
+    // looks funny
+    "object-curly-spacing": [2, "never"]
   },
   "globals": {
     "SANTA": true
