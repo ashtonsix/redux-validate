@@ -57,11 +57,23 @@ validate(null, (v, k) => !v && `You forgot ${_.startCase(v)}`)
 // {title: ''} => {title: 'You forgot Title'}
 ```
 
+React PropTypes
+```js
+import validate, {createValidate} from 'redux-validate';
+const stringValidator = createValidate(PropTypes.string.isRequired);
+
+stringValidator(['title'])
+// {title: 5}) => {title: 'Invalid undefined `title` of type `number` supplied to `<<anonymous>>`, expected `string`.'}
+
+validate({gender: PropTypes.oneOf(['Male', 'Female'])})
+// {gender: 'Transgender'} =>
+// {gender: 'Invalid undefined `gender` of value `Transgender` supplied to `<<anonymous>>`, expected one of ["Male","Female"].'})
+```
+
 ## Todo
 
 * Promises
 * Deep Fields
-* React PropTypes
 
 ## License
 
