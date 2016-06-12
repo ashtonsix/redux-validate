@@ -1,22 +1,4 @@
 {
-  "extends": "airbnb/base",
+  "extends": "permissible",
   "parser": "babel-eslint",
-  "rules": {
-    // THIS IS SPARTA!!
-    "id-length": 0,
-    // THIS IS... a love of expressions
-    "no-nested-ternary": 0,
-    // console <3
-    "no-console": 0,
-    // nah mate, no semi
-    "semi": [2, "never"],
-    "no-unexpected-multiline": 2,
-    // looks funny
-    "object-curly-spacing": [2, "never"],
-    // 100 too short, I have big screen
-    "max-len": [2, 130]
-  },
-  "globals": {
-    "SANTA": true
-  }
 }

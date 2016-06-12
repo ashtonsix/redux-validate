@@ -27,12 +27,14 @@ export const createValidate = df => {
       testAll(_.chain(values), func, [values, ...args]) :
     reqs instanceof Array ?
       testAll(_.chain(values).pick(reqs), func, [values, ...args]) :
-    _.isPlainObject(values) ? (
-        _.chain(values).pick(_.keys(reqs))
-          .mapValues((v, k) => [v, typeof reqs[k] === 'function' ? reqs[k] : () => reqs[k]]) // use identity for non-functions
-          .mapValues(([v, f]) => [v, handlePropTypes(f)])
-          .mapValues(([v, f], k) =>
-            f(v, k, values, ...args)).pickBy().value()) : {}))
+      _.isPlainObject(values) ? (
+      _.chain(values).pick(_.keys(reqs))
+        .mapValues((v, k) => [v, typeof reqs[k] === 'function' ? reqs[k] : () => reqs[k]]) // use identity for non-functions
+        .mapValues(([v, f]) => [v, handlePropTypes(f)])
+        .mapValues(([v, f], k) => f(v, k, values, ...args))
+          .pickBy()
+          .value()) :
+      {}))
 }
 
 export default createValidate((v, k) => !v && `${_.startCase(k)} is required`)

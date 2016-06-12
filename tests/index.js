@@ -1,13 +1,7 @@
-const _ = require('lodash')
-const PropTypes = require('react').PropTypes
-const test = require('tape')
-const index = require('../index.js')
-const validate = index.default
-const createValidate = index.createValidate
-
-// PropTypes.string.name.toString() === 'bound checkType'
-console.log(validate({title: PropTypes.string.isRequired})({title: 5}))
-console.log(PropTypes.string({title: ''}, 'title'))
+import _ from 'lodash'
+import {PropTypes} from 'react'
+import test from 'tape'
+import validate, {createValidate} from '../index.js'
 
 test('simple', t => {
   t.plan(3)
