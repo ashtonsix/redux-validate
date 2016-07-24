@@ -22,7 +22,7 @@ var handlePropTypes = function handlePropTypes(f) {
       args[_key - 3] = arguments[_key];
     }
 
-    return f.name === 'bound checkType' ? _lodash2.default.get(f(values, k), 'message') : f.apply(undefined, [v, k, values].concat(args));
+    return f.name === 'bound checkType' ? _lodash2.default.get(f(values, k, 'redux-validate', 'prop'), 'message') : f.apply(undefined, [v, k, values].concat(args));
   };
 };
 
@@ -66,12 +66,13 @@ var createValidate = exports.createValidate = function createValidate(df) {
         args[_key4 - 1] = arguments[_key4];
       }
 
-      return typeof reqs === 'function' ? reqs.apply(undefined, [values].concat(args)) : !reqs ? testAll(_lodash2.default.chain(values), func, [values].concat(args)) : reqs instanceof Array ? testAll(_lodash2.default.chain(values).pick(reqs), func, [values].concat(args)) : _lodash2.default.isPlainObject(values) ? _lodash2.default.chain(values).pick(_lodash2.default.keys(reqs)).mapValues(function (v, k) {
-        return [v, typeof reqs[k] === 'function' ? reqs[k] : function () {
-          return reqs[k];
+      return typeof reqs === 'function' ? reqs.apply(undefined, [values].concat(args)) : !reqs ? testAll(_lodash2.default.chain(values), func, [values].concat(args)) : reqs instanceof Array ? testAll(_lodash2.default.chain(values).pick(reqs), func, [values].concat(args)) : _lodash2.default.isPlainObject(values) ? _lodash2.default.chain(values).pick(_lodash2.default.keys(reqs))
+      // use identity for non-functions
+      .mapValues(function (v, k) {
+        return [v, typeof reqs[k] === 'function' ? reqs[k] : function (_v) {
+          return !_v && reqs[k];
         }];
-      }) // use identity for non-functions
-      .mapValues(function (_ref3) {
+      }).mapValues(function (_ref3) {
         var _ref4 = _slicedToArray(_ref3, 2);
 
         var v = _ref4[0];

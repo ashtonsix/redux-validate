@@ -4,7 +4,7 @@ import test from 'tape'
 import validate, {createValidate} from '../index.js'
 
 test('simple', t => {
-  t.plan(3)
+  t.plan(4)
   t.deepEqual(
     validate()(
     {title: ''}),
@@ -17,6 +17,10 @@ test('simple', t => {
     validate({title: 'Subject needed'})(
     {title: ''}),
     {title: 'Subject needed'})
+  t.deepEqual(
+    validate({title: 'Subject needed'})(
+    {title: "There's a subject, don't worry"}),
+    {})
 })
 
 test('functions', t => {
@@ -58,9 +62,9 @@ test('react propTypes', t => {
   t.deepEqual(
     newValidate(['title'])(
     {title: 5}),
-    {title: 'Invalid undefined `title` of type `number` supplied to `<<anonymous>>`, expected `string`.'})
+    {title: 'Invalid prop `title` of type `number` supplied to `redux-validate`, expected `string`.'})
   t.deepEqual(
     validate({gender: PropTypes.oneOf(['Male', 'Female'])})(
     {gender: 'Transgender'}),
-    {gender: 'Invalid undefined `gender` of value `Transgender` supplied to `<<anonymous>>`, expected one of ["Male","Female"].'})
+    {gender: 'Invalid prop `gender` of value `Transgender` supplied to `redux-validate`, expected one of ["Male","Female"].'})
 })

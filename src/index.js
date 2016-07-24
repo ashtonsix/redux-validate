@@ -2,7 +2,7 @@ import _ from 'lodash'
 
 // React PropTypes have different function signature, handle edge-case
 const handlePropTypes = f => (v, k, values, ...args) =>
-  f.name === 'bound checkType' ? _.get(f(values, k), 'message') :
+  f.name === 'bound checkType' ? _.get(f(values, k, 'redux-validate', 'prop'), 'message') :
   f(v, k, values, ...args)
 
 const thenable = (blueprint, stack = []) => (...raw) => {
@@ -29,7 +29,8 @@ export const createValidate = df => {
       testAll(_.chain(values).pick(reqs), func, [values, ...args]) :
       _.isPlainObject(values) ? (
       _.chain(values).pick(_.keys(reqs))
-        .mapValues((v, k) => [v, typeof reqs[k] === 'function' ? reqs[k] : () => reqs[k]]) // use identity for non-functions
+        // use identity for non-functions
+        .mapValues((v, k) => [v, typeof reqs[k] === 'function' ? reqs[k] : _v => !_v && reqs[k]])
         .mapValues(([v, f]) => [v, handlePropTypes(f)])
         .mapValues(([v, f], k) => f(v, k, values, ...args))
           .pickBy()
