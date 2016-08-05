@@ -1,4 +1,7 @@
 {
   "extends": "permissible",
   "parser": "babel-eslint",
+  "env": {
+    "mocha": true
+  }
 }

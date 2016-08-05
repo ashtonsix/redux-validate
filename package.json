@@ -1,13 +1,15 @@
 {
   "name": "redux-validate",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Easy validation for redux-form",
   "scripts": {
-    "prestart": "rimraf index.js",
-    "start": "babel src -d .",
-    "poststart": "git add . --all",
-    "pretest": "npm start",
-    "test": "babel-node tests/index.js && eslint src/index.js"
+    "prebuild": "rimraf index.js",
+    "build": "babel src -d .",
+    "postbuild": "git add . --all",
+    "pretest": "npm run lint && npm run build",
+    "test": "mocha",
+    "start": "set DIRECORY='src/'&& mocha --watch --reporter min",
+    "lint": "eslint src test"
   },
   "pre-commit": "test",
   "repository": {
@@ -21,20 +23,18 @@
     "lodash": "^4.6.1"
   },
   "devDependencies": {
-    "babel": "6.5.2",
-    "babel-cli": "6.10.1",
-    "babel-core": "6.9.1",
-    "babel-eslint": "6.0.4",
+    "babel-cli": "6.11.4",
+    "babel-core": "6.11.4",
+    "babel-eslint": "6.1.2",
     "babel-preset-es2015": "6.9.0",
     "babel-preset-stage-0": "6.5.0",
-    "eslint": "2.12.0",
-    "eslint-config-permissible": "1.0.1",
-    "eslint-plugin-import": "1.8.1",
-    "eslint-plugin-jsx-a11y": "1.4.2",
-    "eslint-plugin-react": "5.1.1",
+    "eslint": "2.13.1",
+    "eslint-config-permissible": "1.0.6",
+    "expect": "1.20.2",
+    "mocha": "2.5.3",
+    "mocha-clean": "1.0.0",
     "pre-commit": "1.1.3",
-    "react": "15.1.0",
-    "rimraf": "2.5.2",
-    "tape": "4.5.1"
+    "react": "15.2.1",
+    "rimraf": "2.5.4"
   }
 }
